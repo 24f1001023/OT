@@ -1,0 +1,19 @@
+import math
+
+def max_npr_distinct():
+    arr = list(map(int, input("Enter at least two space-separated non-negative numbers: ").split()))
+    
+    if len(arr) < 2:
+        print("Please enter at least 2 numbers!")
+        return
+        
+    arr.sort(reverse=True)
+    
+    n = arr[0]
+    r = arr[1] 
+    
+    max_val = math.perm(n, r)
+    print(f"Pair (n, r) for maximum nPr is: ({n}, {r})")
+    print(f"Maximum nPr value: {max_val}")
+
+max_npr_distinct()

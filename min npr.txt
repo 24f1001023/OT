@@ -1,0 +1,16 @@
+
+import math
+
+def min_npr_distinct():
+    arr = list(map(int, input("Enter at least two space-separated non-negative numbers: ").split()))
+    
+    if len(arr) < 2:
+        print("Please enter at least 2 numbers!")
+        return
+    arr.sort()
+    r = arr[0] # The absolute smallest becomes r
+    n = arr[1] # The second smallest becomes n
+    min_val = math.perm(n, r)
+    print(f"Pair (n, r) for minimum nPr is: ({n}, {r})")
+    print(f"Minimum nPr value: {min_val}")
+min_npr_distinct()

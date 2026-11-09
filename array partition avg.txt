@@ -1,0 +1,22 @@
+import itertools
+
+def equal_average_partition():
+    arr = list(map(int, input("Enter space-separated numbers for the array: ").split()))
+    n = len(arr)
+    total_sum = sum(arr)
+    arr.sort() 
+    for i in range(1, n // 2 + 1):
+        for combo in itertools.combinations(arr, i):
+            subset1 = list(combo)
+            sum1 = sum(subset1)
+            if sum1 * (n - i) == (total_sum - sum1) * i:
+                subset2 = arr.copy()
+                for num in subset1:
+                    subset2.remove(num)
+                print(f"Subset 1: {subset1}")
+                print(f"Subset 2: {subset2}")
+                return
+    
+    print("-1")
+
+equal_average_partition()

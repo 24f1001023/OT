@@ -1,0 +1,16 @@
+def min_sign_flips():
+    arr = list(map(int, input("Enter space-separated positive numbers: ").split()))
+    dp = {0: 0}
+    for num in arr:
+        new_dp = {}
+        for current_sum, flips in dp.items():
+            s1 = current_sum + num
+            new_dp[s1] = min(new_dp.get(s1, float('inf')), flips)
+            s2 = current_sum - num
+            new_dp[s2] = min(new_dp.get(s2, float('inf')), flips + 1)
+        dp = new_dp
+    min_non_negative_sum = min(s for s in dp.keys() if s >= 0)
+    print(f"Minimum non-negative sum: {min_non_negative_sum}")
+    print(f"Minimum flips required: {dp[min_non_negative_sum]}")
+
+min_sign_flips()
